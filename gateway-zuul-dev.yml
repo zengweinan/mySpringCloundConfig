@@ -1,0 +1,12 @@
+zuul:
+  routes:
+  #api-workorder是路由名称，可以随便定义，但是path和service-id需要一一对应
+    api-workorder: 
+      #当客户访问1127.0.0.1:85/get-order兜会跳转到微信客户端
+      path: /get-order/**
+      #zuul网关默认整合ribbon,实现负载均衡轮询效果
+      serviceId: app-pactera-workorder
+    api-contract: 
+      path: /get-weixin/**
+      # app-pactera-workorder为注册到Eureka上的服务名
+      serviceId: app-pactera-weixin
